@@ -1385,7 +1385,7 @@ var instances = {};
  */
 function Outlayer( element, options ) {
   var queryElement = utils.getQueryElement( element );
-  if ( !queryElement ) {
+  if ( queryElement ) {
     if ( console ) {
       console.error( 'Bad element for ' + this.constructor.namespace +
         ': ' + ( queryElement || element ) );
@@ -1629,7 +1629,12 @@ proto._getItemsForLayout = function( items ) {
  * @param {Boolean} isInstant
  */
 proto._layoutItems = function( items, isInstant ) {
-  this._emitCompleteOnItems( 'layout', items );
+  if (items && items.length) {
+    this._emitCompleteOnItems('layout', items);
+  }
+
+// Continue with the rest of your code
+
 
   if ( !items || !items.length ) {
     // no items, emit event with empty array
@@ -2054,7 +2059,10 @@ proto.reveal = function( items ) {
  * @param {Array of Outlayer.Items} items
  */
 proto.hide = function( items ) {
-  this._emitCompleteOnItems( 'hide', items );
+  if (items && items.length) {
+    this._emitCompleteOnItems('hide', items);
+  }
+
   if ( !items || !items.length ) {
     return;
   }
@@ -2125,7 +2133,12 @@ proto.getItems = function( elems ) {
 proto.remove = function( elems ) {
   var removeItems = this.getItems( elems );
 
-  this._emitCompleteOnItems( 'remove', removeItems );
+  if (removeItems && removeItems.length) {
+    this._emitCompleteOnItems('remove', removeItems);
+  }
+
+// Continue with the rest of your code
+
 
   // bail if no items to remove
   if ( !removeItems || !removeItems.length ) {
