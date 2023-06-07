@@ -1069,7 +1069,7 @@ proto.transition = function( args ) {
   if ( args.from ) {
     this.css( args.from );
     // force redraw. http://blog.alexmaccaw.com/css-transitions
-    var h = this.element.offsetHeight;
+    this.element.offsetHeight;
     // hack for JSHint to hush about unused var
     h = null;
   }
@@ -1386,10 +1386,12 @@ var instances = {};
 function Outlayer( element, options ) {
   var queryElement = utils.getQueryElement( element );
   if ( queryElement ) {
-    if ( console ) {
-      console.error( 'Bad element for ' + this.constructor.namespace +
-        ': ' + ( queryElement || element ) );
-    }
+    if (console) {
+      console.error ('Bad element for ' + this.constructor.namespace +
+    ': ' + (queryElement || element)
+  );
+}
+
     return;
   }
   this.element = queryElement;
@@ -2043,10 +2045,11 @@ proto.prepended = function( elems ) {
  * @param {Array of Outlayer.Items} items
  */
 proto.reveal = function( items ) {
-  this._emitCompleteOnItems( 'reveal', items );
-  if ( !items || !items.length ) {
+  this._emitCompleteOnItems('reveal', items);
+  if (!items.length) {
     return;
-  }
+}
+
   var stagger = this.updateStagger();
   items.forEach( function( item, i ) {
     item.stagger( i * stagger );
